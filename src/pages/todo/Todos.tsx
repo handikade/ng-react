@@ -1,9 +1,19 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import TodoService, { Todo } from './../../services/TodoService'
 
 export default function Todos() {
-  return (
-    <div>
-      <p>Todos works!</p>
-    </div>
-  )
+  const [todos, setTodos] = useState<Todo[]>([])
+  const todoService = new TodoService()
+
+  useEffect(() => {
+    todoService.getAllTodos().subscribe((response) => {
+      console.log(response)
+
+      setTodos(response)
+    })
+  }, [])
+
+  const todoLists = todos.map((todo) => <li key={todo.id}>{todo.title}</li>)
+
+  return <div>{todoLists}</div>
 }
