@@ -1,9 +1,19 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import UserService, { User } from './../../services/UserService'
 
 export default function Users() {
-  return (
-    <div>
-      <p>Users works!</p>
-    </div>
-  )
+  const [users, setUsers] = useState<User[]>([])
+  const userService = new UserService()
+
+  useEffect(() => {
+    userService.getAllUsers().subscribe((response) => {
+      console.log(response)
+
+      setUsers(response)
+    })
+  }, [])
+
+  const userLists = users.map((user) => <li key={user.id}>{user.name}</li>)
+
+  return <div>{userLists}</div>
 }
