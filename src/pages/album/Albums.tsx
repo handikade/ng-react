@@ -7,8 +7,6 @@ export default function Albums() {
 
   useEffect(() => {
     albumService.getAllAlbums().subscribe((response) => {
-      console.log(response)
-
       setAlbums(response)
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps

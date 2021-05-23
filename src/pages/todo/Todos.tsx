@@ -7,8 +7,6 @@ export default function Todos() {
 
   useEffect(() => {
     todoService.getAllTodos().subscribe((response) => {
-      console.log(response)
-
       setTodos(response)
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps

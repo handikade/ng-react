@@ -2,10 +2,9 @@ import { Observable } from 'rxjs/internal/Observable'
 import { Subscriber } from 'rxjs/internal/Subscriber'
 
 export default class AlbumService {
-    constructor() {
-        const token = localStorage.getItem('token')
-        console.log(token)
-    }
+    // constructor() {
+    //     const token = localStorage.getItem('token')
+    // }
 
     getAllAlbums(): Observable<Album[]> {
         const url: string = `https://jsonplaceholder.typicode.com/albums`
