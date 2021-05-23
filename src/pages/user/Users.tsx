@@ -11,6 +11,7 @@ export default function Users() {
 
       setUsers(response)
     })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const userLists = users.map((user) => <li key={user.id}>{user.name}</li>)

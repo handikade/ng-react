@@ -11,6 +11,7 @@ export default function Todos() {
 
       setTodos(response)
     })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const todoLists = todos.map((todo) => <li key={todo.id}>{todo.title}</li>)

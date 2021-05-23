@@ -11,6 +11,7 @@ export default function Albums() {
 
       setAlbums(response)
     })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const albumLists = albums.map((album) => (
