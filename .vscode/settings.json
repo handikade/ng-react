@@ -1,4 +1,5 @@
 {
     "editor.formatOnSave": true,
-    "workbench.colorTheme": "Monokai"
+    "workbench.colorTheme": "Monokai",
+    "editor.tabSize": 2
 }
