@@ -1,5 +1,10 @@
 import React from 'react'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect
+} from 'react-router-dom'
 
 // #region pages
 import Login from './pages/auth/Login'
@@ -13,7 +18,7 @@ export default function App() {
     <Router>
       <Switch>
         <Route exact path="/">
-          <h1>Home</h1>
+          <Redirect to="/users" />
         </Route>
         <Route path="/login">
           <Login></Login>
