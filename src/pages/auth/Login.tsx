@@ -5,6 +5,7 @@ import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
+import { Container, Typography } from '@material-ui/core'
 
 const validationSchema = Yup.object({
   email: Yup.string()
@@ -28,41 +29,63 @@ export default function Login() {
   })
 
   return (
-    <div className="pt-36">
-      <Card>
-        <CardContent>
-          <form onSubmit={formik.handleSubmit}>
-            <div className="mb-8">
-              <TextField
-                fullWidth
-                id="email"
-                name="email"
-                label="Email"
-                value={formik.values.email}
-                onChange={formik.handleChange}
-                error={formik.touched.email && Boolean(formik.errors.email)}
-                helperText={formik.touched.email && formik.errors.email}
-              />
-              <TextField
-                fullWidth
-                id="password"
-                name="password"
-                label="Password"
-                type="password"
-                value={formik.values.password}
-                onChange={formik.handleChange}
-                error={
-                  formik.touched.password && Boolean(formik.errors.password)
-                }
-                helperText={formik.touched.password && formik.errors.password}
-              />
+    <div className="min-h-screen flex items-center justify-center">
+      <Container maxWidth="sm">
+        <Card variant="outlined">
+          <CardContent>
+            <div className="text-center mb-4">
+              <Typography variant="h5" component="h2">
+                Please Login
+              </Typography>
             </div>
-            <Button color="primary" variant="contained" fullWidth type="submit">
-              Login
-            </Button>
-          </form>
-        </CardContent>
-      </Card>
+            <form onSubmit={formik.handleSubmit}>
+              <div className="mb-8">
+                <div className="mb-4">
+                  <TextField
+                    fullWidth
+                    id="email"
+                    name="email"
+                    label="Email"
+                    variant="outlined"
+                    size="small"
+                    value={formik.values.email}
+                    onChange={formik.handleChange}
+                    error={formik.touched.email && Boolean(formik.errors.email)}
+                    helperText={formik.touched.email && formik.errors.email}
+                  />
+                </div>
+                <div className="mt-4">
+                  <TextField
+                    fullWidth
+                    id="password"
+                    name="password"
+                    label="Password"
+                    variant="outlined"
+                    size="small"
+                    type="password"
+                    value={formik.values.password}
+                    onChange={formik.handleChange}
+                    error={
+                      formik.touched.password && Boolean(formik.errors.password)
+                    }
+                    helperText={
+                      formik.touched.password && formik.errors.password
+                    }
+                  />
+                </div>
+              </div>
+              <Button
+                color="primary"
+                variant="contained"
+                fullWidth
+                type="submit"
+              >
+                Login
+              </Button>
+            </form>
+          </CardContent>
+        </Card>
+      </Container>
     </div>
   )
 }
