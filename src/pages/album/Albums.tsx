@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import AlbumService, { Album } from './../../services/AlbumService'
+import AppDashboard from '../../parts/dashboard/AppDashboard'
+import AlbumService, { Album } from '../../services/AlbumService'
 
 export default function Albums() {
   const [albums, setAlbums] = useState<Album[]>([])
@@ -16,5 +17,5 @@ export default function Albums() {
     <li key={album.id}>{album.title}</li>
   ))
 
-  return <div>{albumLists}</div>
+  return <AppDashboard>{albumLists}</AppDashboard>
 }

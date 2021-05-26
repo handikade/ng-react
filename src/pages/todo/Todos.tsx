@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import TodoService, { Todo } from './../../services/TodoService'
+import AppDashboard from '../../parts/dashboard/AppDashboard'
+import TodoService, { Todo } from '../../services/TodoService'
 
 export default function Todos() {
   const [todos, setTodos] = useState<Todo[]>([])
@@ -14,5 +15,5 @@ export default function Todos() {
 
   const todoLists = todos.map((todo) => <li key={todo.id}>{todo.title}</li>)
 
-  return <div>{todoLists}</div>
+  return <AppDashboard>{todoLists}</AppDashboard>
 }

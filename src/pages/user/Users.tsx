@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import UserService, { User } from './../../services/UserService'
+import AppDashboard from '../../parts/dashboard/AppDashboard'
+import UserService, { User } from '../../services/UserService'
 
 export default function Users() {
   const [users, setUsers] = useState<User[]>([])
@@ -16,5 +17,5 @@ export default function Users() {
 
   const userLists = users.map((user) => <li key={user.id}>{user.name}</li>)
 
-  return <div>{userLists}</div>
+  return <AppDashboard>{userLists}</AppDashboard>
 }
