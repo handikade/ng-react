@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import Card from '@material-ui/core/Card'
@@ -6,6 +6,8 @@ import CardContent from '@material-ui/core/CardContent'
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
 import { Container, Typography } from '@material-ui/core'
+import AuthService from '../../services/auth/AuthService'
+import { useHistory } from 'react-router-dom'
 
 const validationSchema = Yup.object({
   email: Yup.string()
@@ -17,14 +19,39 @@ const validationSchema = Yup.object({
 })
 
 export default function Login() {
+  const [isLoading, setIsloading] = useState<boolean>(false)
+  const authService = new AuthService()
+
+  const history = useHistory()
+
   const formik = useFormik({
     initialValues: {
-      email: '',
-      password: ''
+      email: 'admin@test.com',
+      password: '12345678'
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2))
+      setIsloading(true)
+
+      authService
+        .login({
+          email: values.email,
+          password: values.password
+        })
+        .subscribe(
+          (response) => {
+            console.log('#debug response:', response)
+            localStorage.setItem('token', response.token)
+            history.push('/')
+          },
+          (error) => {
+            setIsloading(false)
+            console.log('#debug error:', error)
+          },
+          () => {
+            setIsloading(false)
+          }
+        )
     }
   })
 
@@ -52,6 +79,7 @@ export default function Login() {
                     onChange={formik.handleChange}
                     error={formik.touched.email && Boolean(formik.errors.email)}
                     helperText={formik.touched.email && formik.errors.email}
+                    disabled={isLoading}
                   />
                 </div>
                 <div className="mt-4">
@@ -71,6 +99,7 @@ export default function Login() {
                     helperText={
                       formik.touched.password && formik.errors.password
                     }
+                    disabled={isLoading}
                   />
                 </div>
               </div>
@@ -79,6 +108,7 @@ export default function Login() {
                 variant="contained"
                 fullWidth
                 type="submit"
+                disabled={isLoading}
               >
                 Login
               </Button>
