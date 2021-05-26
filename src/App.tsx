@@ -10,6 +10,8 @@ import Container from '@material-ui/core/Container'
 import { AccountBox, Album, EventNote } from '@material-ui/icons'
 
 // #region pages
+import Login from './pages/auth/Login'
+
 import Users from './pages/user/Users'
 import Todos from './pages/todo/Todos'
 import Albums from './pages/album/Albums'
@@ -37,6 +39,9 @@ export default function LabelBottomNavigation() {
         <Switch>
           <Route exact path="/">
             <h1>Home</h1>
+          </Route>
+          <Route path="/login">
+            <Login></Login>
           </Route>
           <Route path="/users">
             <Users></Users>
