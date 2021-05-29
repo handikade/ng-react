@@ -42,7 +42,6 @@ export default function Login() {
           (response) => {
             console.log('#debug response:', response)
             localStorage.setItem('token', response.token)
-            history.push('/')
           },
           (error) => {
             setIsloading(false)
@@ -50,6 +49,7 @@ export default function Login() {
           },
           () => {
             setIsloading(false)
+            history.push('/')
           }
         )
     }
