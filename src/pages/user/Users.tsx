@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import AppDashboard from '../../parts/dashboard/AppDashboard'
 import UserService, { User } from '../../services/UserService'
+import UserCard from '../../components/user/UserCard'
 
 export default function Users() {
   const [users, setUsers] = useState<User[]>([])
@@ -15,7 +16,14 @@ export default function Users() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const userLists = users.map((user) => <li key={user.id}>{user.name}</li>)
+  const userLists = users.map((user) => (
+    <UserCard
+      key={user.id}
+      name={user.name}
+      email={user.email}
+      phone={user.phone}
+    ></UserCard>
+  ))
 
   return <AppDashboard>{userLists}</AppDashboard>
 }
