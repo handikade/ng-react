@@ -6,11 +6,14 @@ import {
   Redirect
 } from 'react-router-dom'
 
+// #region route
+import AuthRoute from './utils/route/AuthRoute'
+import PrivateRoute from './utils/route/PrivateRoute'
+// #endregion route
+
 // #region pages
 import Login from './pages/auth/Login'
 import Users from './pages/user/Users'
-import Todos from './pages/todo/Todos'
-import Albums from './pages/album/Albums'
 // #endregion pages
 
 export default function App() {
@@ -20,18 +23,9 @@ export default function App() {
         <Route exact path="/">
           <Redirect to="/users" />
         </Route>
-        <Route path="/login">
-          <Login></Login>
-        </Route>
-        <Route path="/users">
-          <Users></Users>
-        </Route>
-        <Route path="/todos">
-          <Todos></Todos>
-        </Route>
-        <Route path="/albums">
-          <Albums></Albums>
-        </Route>
+        <AuthRoute path="/login" component={Login} />
+        <PrivateRoute path="/users" component={Users} />
+        <Route render={() => <Redirect to={{ pathname: '/' }} />} />
       </Switch>
     </Router>
   )
