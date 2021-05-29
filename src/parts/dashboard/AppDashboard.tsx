@@ -8,7 +8,6 @@ import {
   Toolbar,
   Typography
 } from '@material-ui/core'
-import AppBottomNavigation from './../../parts/bottom-navigation/AppBottomNavigation'
 import MenuIcon from '@material-ui/icons/Menu'
 
 const useStyles = makeStyles((theme) => ({
@@ -24,16 +23,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 export default function AppDashboard(props: {
-  children:
-    | string
-    | number
-    | boolean
-    | {}
-    | React.ReactElement<any, string | React.JSXElementConstructor<any>>
-    | React.ReactNodeArray
-    | React.ReactPortal
-    | null
-    | undefined
+  children: React.ReactChild | React.ReactChild[]
 }) {
   const classes = useStyles()
 
@@ -52,13 +42,10 @@ export default function AppDashboard(props: {
           <Typography variant="h6" className={classes.title}>
             News
           </Typography>
-          <Button color="inherit">Login</Button>
+          <Button color="inherit">Logout</Button>
         </Toolbar>
       </AppBar>
-      <Container maxWidth="sm">
-        {props.children}
-        <AppBottomNavigation></AppBottomNavigation>
-      </Container>
+      <Container maxWidth="sm">{props.children}</Container>
     </>
   )
 }
