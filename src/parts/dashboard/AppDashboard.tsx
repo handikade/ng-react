@@ -54,7 +54,9 @@ export default function AppDashboard(props: {
           </Button>
         </Toolbar>
       </AppBar>
-      <Container maxWidth="sm">{props.children}</Container>
+      <Container maxWidth="sm">
+        <div className="p-2">{props.children}</div>
+      </Container>
     </>
   )
 }
