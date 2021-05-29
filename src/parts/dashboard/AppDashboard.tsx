@@ -9,6 +9,7 @@ import {
   Typography
 } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
+import { useHistory } from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,6 +27,12 @@ export default function AppDashboard(props: {
   children: React.ReactChild | React.ReactChild[]
 }) {
   const classes = useStyles()
+  const history = useHistory()
+
+  const logout = () => {
+    localStorage.removeItem('token')
+    history.push('/')
+  }
 
   return (
     <>
@@ -42,7 +49,9 @@ export default function AppDashboard(props: {
           <Typography variant="h6" className={classes.title}>
             News
           </Typography>
-          <Button color="inherit">Logout</Button>
+          <Button color="inherit" onClick={() => logout()}>
+            Logout
+          </Button>
         </Toolbar>
       </AppBar>
       <Container maxWidth="sm">{props.children}</Container>
