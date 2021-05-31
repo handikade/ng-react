@@ -36,7 +36,7 @@ export default function AppDashboard(props: {
 
   return (
     <>
-      <AppBar position="static">
+      <AppBar>
         <Toolbar>
           <IconButton
             edge="start"
@@ -55,7 +55,7 @@ export default function AppDashboard(props: {
         </Toolbar>
       </AppBar>
       <Container maxWidth="sm">
-        <div className="p-2">{props.children}</div>
+        <div className="pt-20 pb-32">{props.children}</div>
       </Container>
     </>
   )
